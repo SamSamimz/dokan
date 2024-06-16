@@ -48,7 +48,7 @@
                     </table>
                 </div>
                 </div>
-            <div class="px-md-4">{{ $categories->links() }}</div>
+            <div class="px-md-4">{{ $categories->links('livewire::bootstrap') }}</div>
         </div>
     </div>
     <!-- Modal -->

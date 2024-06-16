@@ -62,7 +62,7 @@
                    </table>
                </div>
                </div>
-           <div class="px-md-4">{{ $products->links() }}</div>
+           <div class="px-md-4">{{ $products->links('livewire::bootstrap') }}</div>
        </div>
    </div>
    <!-- Modal -->

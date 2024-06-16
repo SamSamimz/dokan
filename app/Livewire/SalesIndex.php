@@ -7,10 +7,11 @@ use App\Models\Product;
 use App\Models\Sale;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SalesIndex extends Component
 {
-
+    use WithPagination;
     public $search = '';
     public $edit = false;
     public $customer_id;
@@ -114,7 +115,7 @@ class SalesIndex extends Component
         if($this->filter_date == 'week') {
             $s_Week = Carbon::now()->startOfWeek();
             $e_Week = Carbon::now()->endOfWeek();
-            $sales = Sale::whereBetween('created_at',[$s_Week,$e_Week])->paginate(3);
+            $sales = Sale::whereBetween('created_at',[$s_Week,$e_Week])->paginate(7);
         }
         if($this->filter_date == 'month') {
             $month = Carbon::now()->month;

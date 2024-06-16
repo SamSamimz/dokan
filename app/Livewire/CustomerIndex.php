@@ -5,9 +5,11 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Customer;
 use Illuminate\Validation\Rule;
+use Livewire\WithPagination;
 
 class CustomerIndex extends Component
 {
+    use WithPagination;
     public $search = '';
     public $customer_id = null;
     public $edit = false;

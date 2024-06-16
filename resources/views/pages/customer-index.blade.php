@@ -47,7 +47,7 @@
                     </table>
                 </div>
                 </div>
-            <div class="px-md-4">{{ $customers->links('pagination::bootstrap-5') }}</div>
+            <div class="px-md-4">{{ $customers->links('livewire::bootstrap') }}</div>
         </div>
     </div>
     <!-- Modal -->

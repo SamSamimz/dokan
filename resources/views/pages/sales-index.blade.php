@@ -72,7 +72,7 @@
                     </table>
                 </div>
             </div>
-            <div class="px-md-4">{{ $sales->links() }}</div>
+            <div class="px-md-4">{{ $sales->links('livewire::bootstrap') }}</div>
             <div class="px-4 py-2 d-flex align-items-center justify-content-between">
                 <h4>{{ __('message.total_sale') }} : {{ $sales->count() }}</h4>
                 <h4>{{ __('message.sale_amount') }} : {{ $sells_amount. ' ' . __('message.tk')}} </h4>
