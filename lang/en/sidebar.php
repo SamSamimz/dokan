@@ -8,5 +8,7 @@ return [
     'product' => 'Product',
     'customer' => 'Customer',
     'sales' => 'Sales',
+    'dues' => 'Dues',
+    'dues section' => 'Dues Section',
 
 ];

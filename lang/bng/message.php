@@ -7,6 +7,7 @@ return [
     'login' => 'লগইন',
     'created_at' => 'সময়',
     'tk' => 'টাকা',
+    'date' => 'সময়',
 
     'name' => 'নাম',
     'email' => 'ই-মেইল',
@@ -18,8 +19,9 @@ return [
     'payed_amount' => 'দেওয়া মূল্য',
     'due_amount' => 'বাকি মূল্য',
     'due_date' => 'বাকি পরিশোধের তারিখ',
+    'last_due_date' => 'শেষ বাকির তারিখ',
     'descriptionname' => 'বিস্তারিত লিখুন',
-    
+
     'category' => 'ক্যাটাগরি',
     'select category' => 'ক্যাটাগরি নির্বাচন করুন',
     'description' => 'বিস্তারিত',
@@ -29,20 +31,22 @@ return [
     'category addedd' => 'নতুন ক্যাটাগরি যোগ করা হয়েছে !',
     'category deleted' => 'ক্যাটাগরি ডিলিট সম্পন্ন হয়েছে !',
     'category updated' => 'ক্যাটাগরি পরিবর্তন সম্পন্ন হয়েছে !',
-    
+
+    'product' => 'প্রোডাক্ট',
     'all product' => 'প্রোডাক্ট সমুহ',
     'add product' => 'নতুন প্রোডাক্ট',
     'productname' => 'প্রোডাক্ট নাম লিখুন',
     'product added' => 'নতুন প্রোডাক্ট যোগ করা হয়েছে !',
     'product deleted' => 'প্রোডাক্ট ডিলিট সম্পন্ন হয়েছে !',
     'product updated' => 'প্রোডাক্ট পরিবর্তন সম্পন্ন হয়েছে !',
-    
+
     'customer' => 'কাস্টোমার',
     'add customer' => 'নতুন কাস্টোমার',
     'customer added' => 'নতুন কাস্টোমার যোগ করা হয়েছে !',
     'customer deleted' => 'কাস্টোমার ডিলিট সম্পন্ন হয়েছে !',
     'customer updated' => 'কাস্টোমার পরিবর্তন সম্পন্ন হয়েছে !',
 
+    'sale_id' => 'বিক্রয় আইডি',
     'all sales' => 'বিক্রয়সমুহ',
     'add sales' => 'নতুন বিক্রয়',
     'sale added' => 'নতুন বিক্রয় যোগ করা হয়েছে  !',
@@ -57,6 +61,8 @@ return [
     'total_payed_amount' => 'পরিশোধিত মূল্য',
     'total_due' => 'মোট বাকি',
 
+    'due' => 'বাকি',
+    'customer_due' => 'কাস্টমার বাকি',
 
 
     'companyname' => 'কোম্পানির নাম',

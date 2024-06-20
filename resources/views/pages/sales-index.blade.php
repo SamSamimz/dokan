@@ -50,7 +50,7 @@
                                 <td>{{ $sale->payed_amount }}</td>
                                 <td>{{ $sale->due_amount }}</td>
                                 <td>{{ $sale->created_at->diffForHumans() }}</td>
-                                <td>{{ $sale->due_date }}</td>
+                                <td>{{ $sale->due_date ?? 'N/A' }}</td>
                                 <td>
                                     {{-- <button wire:click='editCategory({{ $sale }})' class="btn btn-facebook">{{
                                     __('message.edit') }}</button> --}}

@@ -8,4 +8,6 @@ return [
     'product' => 'প্রোডাক্ট',
     'customer' => 'কাস্টোমার',
     'sales' => 'বিক্রয়',
+    'dues' => 'বাকি',
+    'dues section' => 'বাকি সেকশন',
 ];

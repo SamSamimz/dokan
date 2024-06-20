@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\NewDueEvent;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Sale;
@@ -20,7 +21,7 @@ class SalesIndex extends Component
     public $total_price;
     public $payed_amount;
     public $due_amount;
-    public $due_date = '';
+    public $due_date;
     public $filter_date = 'todays';
 
     public function mount() {
@@ -35,7 +36,7 @@ class SalesIndex extends Component
         'total_price' => 'required|numeric',
         'payed_amount' => 'nullable|numeric',
         'due_amount' => 'nullable|numeric',
-        'due_date' => 'nullable|date',
+        'due_date' => 'nullable',
     ];
     public function addSale()
     {
@@ -49,6 +50,9 @@ class SalesIndex extends Component
             'due_amount' => $this->due_amount,
             'due_date' => $this->due_date,
         ]);
+        if($this->due_amount) {
+            event(new NewDueEvent($sale));
+        }
         if($sale) {
             session()->flash('success', __('message.sale added'));
             $this->closeModal();
@@ -121,7 +125,7 @@ class SalesIndex extends Component
             $month = Carbon::now()->month;
             // $year = Carbon::now()->year();
             $sales = Sale::whereMonth('created_at',$month)
-            ->paginate(3);
+            ->paginate(7);
         }
         if($this->filter_date == '') {   
             $sales = Sale::paginate(7);

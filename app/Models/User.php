@@ -24,6 +24,10 @@ class User extends Authenticatable
         return $this->hasMany(Sale::class);
     }
 
+    public function dues() :HasMany {
+        return $this->hasMany(Due::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

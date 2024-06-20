@@ -1,7 +1,9 @@
 <?php
 
 use App\Livewire\CategoryIndex;
+use App\Livewire\CustomerDueIndex;
 use App\Livewire\CustomerIndex;
+use App\Livewire\DueIndex;
 use App\Livewire\Home;
 use App\Livewire\ProductIndex;
 use App\Livewire\SalesIndex;
@@ -15,6 +17,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/products',ProductIndex::class)->name('products.index');
     Route::get('/customers',CustomerIndex::class)->name('customers.index');
     Route::get('/sales',SalesIndex::class)->name('sales.index');
+    Route::get('/dues',DueIndex::class)->name('dues.index');
+    Route::get('/customer-dues',CustomerDueIndex::class)->name('customer-dues.index');
 });
 
 
