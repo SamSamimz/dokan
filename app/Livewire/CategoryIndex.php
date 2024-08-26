@@ -48,21 +48,14 @@ class CategoryIndex extends Component
         }
     }
 
-    // public function editCategory(Category $category)
-    // {
-    //     $this->id = $category->id;
-    //     $this->edit = true;
-    //     $this->name = $category->name;
-    //     $this->description = $category->description;
-    //     $this->status = $category->status == 'active' ? true : false;
-    //     $this->dispatch('open-modal');
-    // }
-
-
-    #[On('open-modal')]
-    public function editCategory()
+    public function editCategory(Category $category)
     {
-        // dd("Category");
+        $this->id = $category->id;
+        $this->edit = true;
+        $this->name = $category->name;
+        $this->description = $category->description;
+        $this->status = $category->status == 'active' ? true : false;
+        $this->dispatch('open-modal');
     }
 
     public function edit()
@@ -74,6 +67,12 @@ class CategoryIndex extends Component
     {
         $category->delete();
         session()->flash('success', __('message.category deleted'));
+    }
+
+    #[On('close-modal')]
+    public function resetValue()
+    {
+        $this->reset();
     }
 
     public function render()
