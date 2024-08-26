@@ -27,7 +27,7 @@
                         <tbody>
                             @forelse ($categories as $index => $category)
                             <tr class="{{ strtolower($search) == strtolower($category->name) ? 'bg-warning' : null }}">
-                                <td>{{ ++$index }}</td>
+                                <td>{{ $category->user->name }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ Str::limit($category->description,50) }}</td>
                                 <td>

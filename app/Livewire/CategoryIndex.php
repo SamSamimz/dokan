@@ -79,9 +79,9 @@ class CategoryIndex extends Component
     public function render()
     {
         if ($this->search && strlen($this->search > 2)) {
-            $categories = Category::where('name', 'LIKE', '%' . $this->search . '%')->paginate(7);
+            $categories = Category::with('user')->where('name', 'LIKE', '%' . $this->search . '%')->paginate(7);
         } else {
-            $categories = Category::paginate(7);
+            $categories = Category::with('user')->paginate(7);
         }
         return view('pages.category-index', compact('categories'));
     }
