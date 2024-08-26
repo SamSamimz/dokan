@@ -32,10 +32,10 @@
                                 <td>{{ Str::limit($category->description,50) }}</td>
                                 <td>
                                     <label
-                                        class="badge badge-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</label>
+                                        class="badge badge-{{$category->status ? 'primary' : 'danger' }}">{{ $category->status ? "Active" : "Inactive" }}</label>
                                 </td>
                                 <td>
-                                    <button wire:click='editCategory({{ $category }})' class="btn btn-facebook">{{ __('message.edit') }}</button>
+                                    <button wire:click='editCategory({{ $category->id }})' class="btn btn-facebook">{{ __('message.edit') }}</button>
                                     <button  wire:click='deleteCategory({{ $category }})' class="btn btn-google">{{ __('message.delete') }}</button>
                                 </td>
                             </tr>
@@ -67,22 +67,22 @@
                         <div>
                             <div class="form-group">
                                 <label for="name">{{ __('message.name') }} :</label>
-                                <input wire:model.defer='name' type="text" class="form-control" id="name"
+                                <input wire:model='category_data.name' type="text" class="form-control" id="name"
                                     autocomplete="off" placeholder="{{ __('message.categoryname') }}" />
-                                @error('name')
+                                @error('category_data.name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="description">{{ __('message.description') }} (optional) :</label>
-                                <textarea wire:model.defer='description' name="description" id="description"
+                                <textarea rows="6" wire:model='category_data.description' name="description" id="description"
                                     class="form-control" placeholder="{{ __('message.descriptionname') }}"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-check-label" for="status">{{ __('message.status') }} : </label>
-                                <input wire:model='status' type="checkbox" class="form-check" id="status">
+                                <input wire:model='category_data.status' type="checkbox" class="form-check" id="status">
                             </div>
 
                         </div>

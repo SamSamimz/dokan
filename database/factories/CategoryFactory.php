@@ -22,8 +22,7 @@ class CategoryFactory extends Factory
             'user_id' => 1,
             'name' => $name,
             'slug' => Str::slug($name),
-            'description' => $this->faker->text(),
-            'status' => $this->faker->randomElement(['active','inactive']),
+            'description' => $this->faker->text()
         ];
     }
 }

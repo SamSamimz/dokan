@@ -13,34 +13,31 @@ class CategoryIndex extends Component
 {
     use WithPagination;
     public $search = '';
-    public $edit = false;
-    public $id = null;
-    public $name = '';
-    public $status = true;
-    public $description = '';
+    public $edit   = false;
+    public $id     = null;
+    public $category_data = [
+        "name"        => '',
+        "status"      => false,
+        "description" => '',
+    ];
+
     public function addCategory()
     {
         $this->validate([
-            'name' => 'required',
+            'category_data.name' => 'required',
         ]);
+        $this->category_data['slug'] = Str::slug($this->category_data['name']);
         if ($this->edit) {
-            $category = Auth::user()->categories()->where('id', $this->id)->update([
-                'name' => $this->name,
-                'slug' => Str::slug($this->name),
-                'status' => $this->status ? 'active' : 'inactive',
-                'description' => $this->description,
-            ]);
+            dd($this->category_data);
+            $category = Category::find($this->id)->toArray();
+            $category = Auth::user()->categories()->where('id', $this->id)->update($this->category_data);
             if ($category) {
                 $this->dispatch('close-modal');
                 session()->flash('success', __('message.category updated'));
             }
         } else {
-            $category = Auth::user()->categories()->create([
-                'name' => $this->name,
-                'slug' => Str::slug($this->name),
-                'status' => $this->status ? 'active' : 'inactive',
-                'description' => $this->description,
-            ]);
+
+            $category = Auth::user()->categories()->create($this->category_data);
             if ($category) {
                 $this->dispatch('close-modal');
                 session()->flash('success', __('message.category addedd'));
@@ -48,19 +45,12 @@ class CategoryIndex extends Component
         }
     }
 
-    public function editCategory(Category $category)
+    public function editCategory($id)
     {
-        $this->id = $category->id;
-        $this->edit = true;
-        $this->name = $category->name;
-        $this->description = $category->description;
-        $this->status = $category->status == 'active' ? true : false;
-        $this->dispatch('open-modal');
-    }
+        $category = Category::findOrFail($id)->toArray();
+        $this->category_data = $category;
 
-    public function edit()
-    {
-        dd("Category");
+        $this->dispatch('open-modal');
     }
 
     public function deleteCategory(Category $category)
