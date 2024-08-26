@@ -7,6 +7,7 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Computed;
 
 class ProductIndex extends Component
 {
@@ -101,30 +102,39 @@ class ProductIndex extends Component
         $this->reset();
     }
 
+    #[Computed]
+    public function categories()
+    {
+        return Category::select('id','name')->get();
+    }
+
     public function render()
     {
         $categories = Category::all();
-        $products = Product::paginate(7);
+        $products = Product::with('category','sales')->paginate(7);
         if ($this->search_by_category) {
             if ($this->search && strlen($this->search) > 2) {
-                $products = Product::
-                where('category_id', $this->search_by_category)
+                $products = Product::with('category','sales')
+                ->where('category_id', $this->search_by_category)
                 ->where('name', 'LIKE', '%' . $this->search . '%')
                 ->paginate(7);
             }else {
-                $products = Product::where('category_id', $this->search_by_category)->paginate(7);
+                $products = Product::with('category','sales')->where('category_id', $this->search_by_category)->paginate(7);
             }
         }
         if ($this->search && strlen($this->search) > 2) {
             if($this->search_by_category) {
-                $products = Product::
-                where('name', 'LIKE', '%' . $this->search . '%')
+                $products = Product::with('category','sales')
+                ->where('name', 'LIKE', '%' . $this->search . '%')
                 ->where('category_id', $this->search_by_category)
                 ->paginate(7);
             }else {
-                $products = Product::where('name', 'LIKE', '%' . $this->search . '%')->paginate(7);
+                $products = Product::with('category','sales')->where('name', 'LIKE', '%' . $this->search . '%')->paginate(7);
             }
         }
-        return view('pages.product-index', compact('products', 'categories'));
+        return view('pages.product-index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 }
