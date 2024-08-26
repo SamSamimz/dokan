@@ -64,18 +64,6 @@ class CategoryIndex extends Component
         session()->flash('success', __('message.category deleted'));
     }
 
-    public function openModal()
-    {
-        $this->edit ? null : $this->reset();
-        $this->dispatch('open-modal');
-    }
-
-    public function closeModal()
-    {
-        $this->reset();
-        $this->dispatch('close-modal');
-    }
-
     public function render()
     {
         if ($this->search && strlen($this->search > 2)) {
