@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     'welcome' => 'Welcome to Dokanapp',
     'logout' => 'Logout',
     'login' => 'Login',
