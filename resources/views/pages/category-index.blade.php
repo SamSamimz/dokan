@@ -35,7 +35,7 @@
                                         class="badge badge-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</label>
                                 </td>
                                 <td>
-                                    <button wire:click='editCategory({{ $category }})' class="btn btn-facebook">{{ __('message.edit') }}</button>
+                                    <button wire:click.prevent="$dispatch('open-modal')" class="btn btn-facebook">{{ __('message.edit') }}</button>
                                     <button  wire:click='deleteCategory({{ $category }})' class="btn btn-google">{{ __('message.delete') }}</button>
                                 </td>
                             </tr>

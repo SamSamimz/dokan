@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 
 class CategoryIndex extends Component
@@ -47,15 +48,26 @@ class CategoryIndex extends Component
         }
     }
 
-    public function editCategory(Category $category)
+    // public function editCategory(Category $category)
+    // {
+    //     $this->id = $category->id;
+    //     $this->edit = true;
+    //     $this->name = $category->name;
+    //     $this->description = $category->description;
+    //     $this->status = $category->status == 'active' ? true : false;
+    //     $this->dispatch('open-modal');
+    // }
+
+
+    #[On('open-modal')]
+    public function editCategory()
     {
-        $this->id = $category->id;
-        $this->edit = true;
-        $this->name = $category->name;
-        $this->description = $category->description;
-        $this->status = $category->status == 'active' ? true : false;
-        $this->openModal();
-        // session()->flash('success',__('message.category deleted'));
+        // dd("Category");
+    }
+
+    public function edit()
+    {
+        dd("Category");
     }
 
     public function deleteCategory(Category $category)
