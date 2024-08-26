@@ -15,7 +15,7 @@
                       @endforeach
                      </select>
                  </div>
-                   <button class="btn btn-facebook" wire:click='openModal()'>{{ __('message.add product') }}</button>
+                   <button class="btn btn-facebook" wire:click.prevent="$dispatch('open-modal')">{{ __('message.add product') }}</button>
                </div>
                </p>
                @session('success')
@@ -72,7 +72,7 @@
            <div class="modal-content">
                <div class="modal-header">
                    <h5 class="modal-title" id="productModalLabel">{{ __('message.add product') }}</h5>
-                   <button type="button" class="close" wire:click='closeModal()'>
+                   <button type="button" class="close" wire:click.prevent="$dispatch('close-modal')">
                        <span>&times;</span>
                    </button>
                </div>
@@ -142,7 +142,7 @@
                        </div>
                    </div>
                    <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" wire:click='closeModal()'>{{ __('message.close') }}</button>
+                       <button type="button" class="btn btn-secondary" wire:click.prevent="$dispatch('close-modal')">{{ __('message.close') }}</button>
                        <button type="submit" class="btn btn-primary">{{ __('message.submit') }}</button>
                    </div>
                </form>
